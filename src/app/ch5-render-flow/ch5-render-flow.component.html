@@ -1,25 +1,20 @@
 <h1>ch5 render flow</h1>
-<h2>5.3.ngClass and className bindings</h2>
-
+<h2>5.5.Pipes for data transformation</h2>
 <h3>Airline Passengers</h3>
 <ul>
   <li *ngFor="let passenger of passengers; let i = index">
-    <span class="status" [class.checked-in]="passenger.checkedIn"></span>
+    <span class="status" 
+    [style.backgroundColor]="(passenger.checkedIn? '#2ecc71' : '#c0392b')"></span>
     {{i}}:{{passenger.fullname}}
-  </li>
-</ul>
-<h3>Airline Passengers</h3>
-<ul>
-  <li *ngFor="let passenger of passengers; let i = index">
-    <span class="status"
-    [ngClass]="{
-      'checked-in': passenger.checkedIn,
-      'checked-out': !passenger.checkedIn
-    }"></span>
-    {{i}}:{{passenger.fullname}}
+    <p>{{passenger | json}}</p>
+    <p>Checked In Date: 
+      {{passenger.checkedIn? (passenger.checkInDate | date: 'y/MMMM/d' | uppercase): 
+      'Not checked in'}}
+    </p>
   </li>
 </ul>
 <hr>
+
 <h2>5.4.ngStyle and style bindings</h2>
 <h3>Airline Passengers</h3>
 <ul>
@@ -39,6 +34,29 @@
       'font-size': (passenger.checkedIn? '20px' : '10px')
     }"
     >Y</span>
+    {{i}}:{{passenger.fullname}}
+  </li>
+</ul>
+<hr>
+
+
+<h2>5.3.ngClass and className bindings</h2>
+
+<h3>Airline Passengers</h3>
+<ul>
+  <li *ngFor="let passenger of passengers; let i = index">
+    <span class="status" [class.checked-in]="passenger.checkedIn"></span>
+    {{i}}:{{passenger.fullname}}
+  </li>
+</ul>
+<h3>Airline Passengers</h3>
+<ul>
+  <li *ngFor="let passenger of passengers; let i = index">
+    <span class="status"
+    [ngClass]="{
+      'checked-in': passenger.checkedIn,
+      'checked-out': !passenger.checkedIn
+    }"></span>
     {{i}}:{{passenger.fullname}}
   </li>
 </ul>
