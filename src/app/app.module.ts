@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Ch5RenderFlowComponent } from './ch5-render-flow/ch5-render-flow.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Ch5RenderFlowComponent
   ],
   imports: [
     BrowserModule,
