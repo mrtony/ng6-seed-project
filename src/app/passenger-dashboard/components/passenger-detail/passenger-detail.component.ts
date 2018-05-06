@@ -1,29 +1,39 @@
 import { Passenger } from './../../../models/passenger.interface';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-passenger-detail',
-  template: `
-    <span class="status"
-    [style.backgroundColor]="(detail.checkedIn? '#2ecc71' : '#c0392b')"></span>
-    {{detail.fullname}}
-    <p>Checked In Date:
-      {{detail.checkedIn? (detail.checkInDate | date: 'y/MMMM/d' | uppercase):
-      'Not checked in'}}
-    </p>
-    <div class="children">
-        Children: {{detail.children?.length || 0 }}
-    </div>
-  `,
+  templateUrl: './passenger-detail.component.html',
   styleUrls: ['./passenger-detail.component.scss'],
 })
 export class PassengerDetailComponent implements OnInit {
   @Input() detail: Passenger;
+  editing = false;
+
+  @Output() edit: EventEmitter<Passenger>;
+  @Output() remove: EventEmitter<Passenger>;
 
   constructor() {
+    this.edit = new EventEmitter();
+    this.remove = new EventEmitter();
   }
 
   ngOnInit() {
+  }
+
+  onNameChange(name: string): void {
+    this.detail.fullname = name;
+  }
+
+  toggleEdit(): void {
+    this.editing = !this.editing;
+    if (!this.editing) {// 表示是done
+      this.edit.emit(this.detail);
+    }
+  }
+
+  onRemove(): void {
+    this.remove.emit(this.detail);
   }
 
 }
