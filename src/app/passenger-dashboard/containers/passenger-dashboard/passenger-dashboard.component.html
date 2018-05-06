@@ -1,6 +1,8 @@
-<app-product-count></app-product-count>
+<app-product-count 
+[items]="passengers">
+</app-product-count>
 <app-product-detail></app-product-detail>
-<h3>Airline Passengers</h3>
+
 <ul>
   <li *ngFor="let passenger of passengers; let i = index">
     <span class="status" 
