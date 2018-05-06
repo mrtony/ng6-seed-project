@@ -45,10 +45,16 @@ export class PassengerDashboardComponent implements OnInit {
   }
 
   handleEdit(event: Passenger): void {
-    console.log(event);
+    this.passengers = this.passengers.map((p) => {
+      // 建立immutable object
+      if (p.id === event.id) {
+        p = { ...p, ...event};
+      }
+      return p;
+    });
   }
 
   handleRemove(event: Passenger): void {
-    console.log(event);
+    this.passengers = this.passengers.filter((p) => p.id !== event.id);
   }
 }
