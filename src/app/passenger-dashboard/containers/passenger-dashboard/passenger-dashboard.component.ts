@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-passenger-dashboard',
-  styleUrls: ['./passenger-dashboard.component.scss'],
+  styleUrls: [],
   templateUrl: './passenger-dashboard.component.html'
 })
 export class PassengerDashboardComponent implements OnInit {

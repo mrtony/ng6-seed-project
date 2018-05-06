@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PassengerDashboardComponent } from './containers/passenger-dashboard/passenger-dashboard.component';
-import { ProductCountComponent } from './components/product-count/product-count.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PassengerCountComponent } from './components/passenger-count/passenger-count.component';
+import { PassengerDetailComponent } from './components/passenger-detail/passenger-detail.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [PassengerDashboardComponent, ProductCountComponent, ProductDetailComponent],
+  declarations: [PassengerDashboardComponent, PassengerCountComponent, PassengerDetailComponent],
   exports: [PassengerDashboardComponent]
 })
 export class PassengerDashboardModule { }
