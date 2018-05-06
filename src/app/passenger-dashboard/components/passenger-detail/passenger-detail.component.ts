@@ -1,12 +1,12 @@
 import { Passenger } from './../../../models/passenger.interface';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-passenger-detail',
   templateUrl: './passenger-detail.component.html',
   styleUrls: ['./passenger-detail.component.scss'],
 })
-export class PassengerDetailComponent implements OnInit {
+export class PassengerDetailComponent implements OnInit, OnChanges {
   @Input() detail: Passenger;
   editing = false;
 
@@ -16,6 +16,10 @@ export class PassengerDetailComponent implements OnInit {
   constructor() {
     this.edit = new EventEmitter();
     this.remove = new EventEmitter();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.detail = {...changes['detail'].currentValue};
   }
 
   ngOnInit() {
