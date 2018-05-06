@@ -46,9 +46,8 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/tailwindcss/dist/tailwind.css",
               "src/styles.scss",
-              "src/tailwind.scss"
+              "src/tailwind.css"
             ],
             "scripts": []
           },

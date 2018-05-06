@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ch5RenderFlowComponent } from './ch5-render-flow/ch5-render-flow.component';
+import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashboard.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { Ch5RenderFlowComponent } from './ch5-render-flow/ch5-render-flow.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // Customer Modules
+    PassengerDashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

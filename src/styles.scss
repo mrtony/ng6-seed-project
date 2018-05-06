@@ -14,7 +14,10 @@ html, body {
   -webkit-font-smoothing: antialiased;
   color: #545e6f;
 }
-
+a {
+  color: #9f72e6;
+  text-decoration: none;
+}
 img {
   vertical-align: bottom;
 }
@@ -27,16 +30,12 @@ ol {
   margin: 0;
   padding: 0;
 }
-a {
-  color: #9f72e6;
-  text-decoration: none;
-}
+
 input,
 button {
   outline: 0;
 }
 input {
-  border: none;
   background: #fff;
   font-size: 13px;
   padding: 6px 30px 6px 10px;

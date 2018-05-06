@@ -1,0 +1,17 @@
+<h3>Airline Passengers</h3>
+<ul>
+  <li *ngFor="let passenger of passengers; let i = index">
+    <span class="status" 
+    [style.backgroundColor]="(passenger.checkedIn? '#2ecc71' : '#c0392b')"></span>
+    {{i}}:{{passenger.fullname}}
+    <p>{{passenger | json}}</p>
+    <p>Checked In Date: 
+      {{passenger.checkedIn? (passenger.checkInDate | date: 'y/MMMM/d' | uppercase): 
+      'Not checked in'}}
+    </p>
+    <div class="children">
+        Children: {{passenger.children?.length || 0 }}
+    </div>
+
+  </li>
+</ul>
