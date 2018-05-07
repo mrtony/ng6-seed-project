@@ -4,7 +4,14 @@ import { Passenger } from './../models/passenger.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Options } from 'selenium-webdriver/ie';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+};
 
 const API_HOST = environment.production ? '' : 'http://localhost:3000';
 const PASSENGER_API = `${API_HOST}/api/passengers`;
@@ -23,7 +30,7 @@ export class PassengerDashboardService {
 
   updatePassenger(passenger: Passenger): Observable<Passenger> {
     return this.httpClient
-    .put<Passenger>(`${PASSENGER_API}/${passenger.id}`, passenger);
+    .put<Passenger>(`${PASSENGER_API}/${passenger.id}`, passenger, httpOptions);
   }
 
   removePassenger(passenger: Passenger): Observable<void> {
