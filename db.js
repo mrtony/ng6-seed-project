@@ -41,8 +41,8 @@ var myCustomers = [
 ];
 module.exports = function () {
     return {
-        users: myUsers.slice(),
-        customers: myCustomers.slice(),
+        // users: [...myUsers],
+        // customers: [...myCustomers],
         passengers: passengers.slice()
     };
 };

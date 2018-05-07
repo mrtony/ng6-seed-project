@@ -1,4 +1,5 @@
 {
   "/api/": "/",
-  "/api/passengers/": "/passengers"
+  "/api/passengers/": "/passengers",
+  "/api/passengers/:id": "/passengers/:id"
 }

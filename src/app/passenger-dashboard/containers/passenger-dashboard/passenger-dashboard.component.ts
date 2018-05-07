@@ -16,22 +16,29 @@ export class PassengerDashboardComponent implements OnInit {
     this.passengerService
     .getPassengers()
     .subscribe((data) => {
-      console.log('Data:', data);
       this.passengers = data;
     });
   }
 
   handleEdit(event: Passenger): void {
-    this.passengers = this.passengers.map((p) => {
-      // 建立immutable object
-      if (p.id === event.id) {
-        p = { ...p, ...event};
-      }
-      return p;
+    this.passengerService
+    .updatePassenger(event)
+    .subscribe((data) => {
+      this.passengers = this.passengers.map((p) => {
+        // 建立immutable object
+        if (p.id === data.id) {
+          p = { ...p, ...data};
+        }
+        return p;
+      });
     });
   }
 
   handleRemove(event: Passenger): void {
-    this.passengers = this.passengers.filter((p) => p.id !== event.id);
+    this.passengerService
+    .removePassenger(event)
+    .subscribe(() => {
+      this.passengers = this.passengers.filter((p) => p.id !== event.id);
+    });
   }
 }

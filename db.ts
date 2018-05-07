@@ -79,8 +79,8 @@ const myCustomers: ICustomer[] = [
 
 module.exports = () => {
   return {
-    users: [...myUsers],
-    customers: [...myCustomers],
+    // users: [...myUsers],
+    // customers: [...myCustomers],
     passengers: [...passengers]
   };
 };
