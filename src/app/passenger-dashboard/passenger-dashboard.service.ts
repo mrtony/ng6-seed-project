@@ -3,7 +3,7 @@ import { environment } from './../../environments/environment';
 import { Passenger } from './../models/passenger.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { map, filter, switchMap, catchError, retry } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Options } from 'selenium-webdriver/ie';
 
@@ -26,6 +26,13 @@ export class PassengerDashboardService {
   getPassengers(): Observable<Passenger[]> {
     return this.httpClient
       .get<Passenger[]>(PASSENGER_API);
+      // .pipe(
+      //   retry(3),
+      //   catchError((err, caught) => {
+      //     console.log(err);
+      //     return caught;
+      //   })
+      // );
   }
 
   updatePassenger(passenger: Passenger): Observable<Passenger> {
