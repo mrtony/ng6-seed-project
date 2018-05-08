@@ -29,6 +29,7 @@ interface Passenger {
   fullname: string;
   checkedIn: boolean;
   checkInDate?: number;
+  baggage: string;
   children?: Array<Child>;
 }
 
@@ -37,30 +38,35 @@ const passengers: Passenger[] = [{
       fullname: 'Stephen',
       checkedIn: true,
       checkInDate: 1490742000000,
+      baggage: '',
       children: undefined
     }, {
       id: 2,
       fullname: 'Rose',
       checkedIn: false,
       checkInDate: undefined,
+      baggage: '',
       children: [{ name: 'Ted', age: 12 }, { name: 'Chloe', age: 7 }]
     }, {
       id: 3,
       fullname: 'James',
       checkedIn: true,
       checkInDate: 1491606000000,
+      baggage: '',
       children: undefined
     }, {
       id: 4,
       fullname: 'Louise',
       checkedIn: true,
       checkInDate: 1488412800000,
+      baggage: '',
       children: [{ name: 'Jessica', age: 1 }]
     }, {
       id: 5,
       fullname: 'Tina',
       checkedIn: false,
       checkInDate: undefined,
+      baggage: '',
       children: undefined
     }];
 

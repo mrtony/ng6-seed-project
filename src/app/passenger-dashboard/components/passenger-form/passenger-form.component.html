@@ -1,0 +1,19 @@
+<div>
+  {{ detail | json}}
+</div>
+<form #detailForm="ngForm" novalidate>
+  <div>
+    <input type="text" 
+    name="fullname"
+    [ngModel]="detail?.fullname"
+    >
+  </div>
+  <div>
+    <input type="text" 
+    name="id"
+    [ngModel]="detail?.id"
+    >
+  </div>
+  {{ detailForm.value | json }}
+</form>
+
