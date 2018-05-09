@@ -3,7 +3,7 @@ var passengers = [{
         fullname: 'Stephen',
         checkedIn: true,
         checkInDate: 1490742000000,
-        baggage: '',
+        baggage: 'hand-only',
         children: undefined
     }, {
         id: 2,

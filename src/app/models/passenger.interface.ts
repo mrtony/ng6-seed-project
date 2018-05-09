@@ -3,6 +3,11 @@ export interface Child {
   age: number;
 }
 
+export interface Baggage {
+  key: string;
+  value: string;
+}
+
 export interface Passenger {
   id: number;
   fullname: string;
