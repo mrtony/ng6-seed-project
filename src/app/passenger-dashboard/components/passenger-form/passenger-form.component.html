@@ -5,14 +5,24 @@
   <div>
     <input type="text" 
     name="fullname"
+    required
+    #fullname="ngModel"
     [ngModel]="detail?.fullname"
     >
+    <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">
+      Fullname is required
+    </div>
   </div>
   <div>
     <input type="text" 
     name="id"
+    required
+    #id="ngModel"
     [ngModel]="detail?.id"
     >
+    <div *ngIf="id.invalid && (id.dirty || id.touched)">
+        Fullname is required
+      </div>
   </div>
   <div>
     <label for="checkedIn">
@@ -58,6 +68,8 @@
       </option>
     </select>
   </div>
-  {{ detailForm.value | json }}
+  <div>Form Values: {{ detailForm.value | json }}</div>
+  <div>Form Valid: {{ detailForm.valid | json }}</div>
+  <div>Form Invalid: {{ detailForm.invalid | json }}</div>
 </form>
 
