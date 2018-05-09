@@ -14,6 +14,32 @@
     [ngModel]="detail?.id"
     >
   </div>
+  <div>
+    <label for="checkedIn">
+        <input 
+        type="radio" 
+        name="checkedIn" 
+        [value]="true" 
+        [ngModel]="detail?.checkedIn" 
+        (ngModelChange)="toggleCheckIn($event)">
+        Yes
+    </label>
+    <label for="checkedIn">
+        <input 
+        type="radio" 
+        name="checkedIn" 
+        [value]="false"
+        [ngModel]="detail?.checkedIn" 
+        (ngModelChange)="toggleCheckIn($event)">
+        No
+    </label>
+  </div>
+  <div *ngIf="detailForm.value.checkedIn">
+    Check In Date:
+    <input type="number" 
+    name="checkInDate"
+    [ngModel]="detail?.checkInDate">
+  </div>
   {{ detailForm.value | json }}
 </form>
 
