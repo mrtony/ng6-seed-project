@@ -1,4 +1,6 @@
-<form #detailForm="ngForm" novalidate>
+<form 
+ (submit)="handleSubmit(detailForm.value, detailForm.valid)" 
+ #detailForm="ngForm" novalidate>
   <div>
     <input type="text" 
     name="fullname"
