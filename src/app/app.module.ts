@@ -7,16 +7,19 @@ import { Ch5RenderFlowComponent } from './ch5-render-flow/ch5-render-flow.compon
 import { HomeComponent } from './home.component';
 import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashboard.module';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full'}
+  { path: '', component: HomeComponent, pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     Ch5RenderFlowComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
