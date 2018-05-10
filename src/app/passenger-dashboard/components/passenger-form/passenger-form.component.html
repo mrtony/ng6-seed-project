@@ -1,6 +1,3 @@
-<div>
-  {{ detail | json}}
-</div>
 <form #detailForm="ngForm" novalidate>
   <div>
     <input type="text" 
@@ -68,8 +65,8 @@
       </option>
     </select>
   </div>
-  <div>Form Values: {{ detailForm.value | json }}</div>
-  <div>Form Valid: {{ detailForm.valid | json }}</div>
-  <div>Form Invalid: {{ detailForm.invalid | json }}</div>
+  <button type="submit" [disabled]="detailForm.invalid">
+    Update Passenger
+  </button>
 </form>
 
