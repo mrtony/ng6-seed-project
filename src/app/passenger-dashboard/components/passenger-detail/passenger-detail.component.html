@@ -1,27 +1,35 @@
 <span class="status"
 [style.backgroundColor]="(detail.checkedIn? '#2ecc71' : '#c0392b')"></span>
 <div>
-<div *ngIf="editing; else display">
-  <input type="text" 
-  [value]="detail.fullname" 
-  (input)="onNameChange(name.value)"
-  #name>
+  <div *ngIf="editing; else display">
+    <input type="text" 
+    [value]="detail.fullname" 
+    (input)="onNameChange(name.value)"
+    #name>
+  </div>
+  <ng-template #display>
+    {{detail.fullname}}
+  </ng-template>
+  <p>Checked In Date:
+    {{detail.checkedIn? (detail.checkInDate | date: 'y/MMMM/d' | uppercase):
+    'Not checked in'}}
+  </p>
+  <div class="children">
+      Children: {{detail.children?.length || 0 }}
+  </div>
+  <button 
+   (click)="toggleEdit()" 
+   class="bg-blue text-white font-bold mr-2 rounded hover:bg-blue-light">
+  {{editing? "Done" : "Edit"}}
+  </button>
+  <button 
+   (click)="onRemove()" 
+   class="bg-red text-white font-bold mr-2 rounded hover:bg-red-light">
+   Remove
+  </button>
+  <button 
+   (click)="onView()" 
+   class="bg-green text-white font-bold rounded hover:bg-green-light">
+   View
+  </button>
 </div>
-<ng-template #display>
-  {{detail.fullname}}
-</ng-template>
-<p>Checked In Date:
-  {{detail.checkedIn? (detail.checkInDate | date: 'y/MMMM/d' | uppercase):
-  'Not checked in'}}
-</p>
-<div class="children">
-    Children: {{detail.children?.length || 0 }}
-</div>
-<button 
-(click)="toggleEdit()" 
-class="bg-blue text-white font-bold mr-2 rounded hover:bg-blue-light"
->{{editing? "Done" : "Edit"}}</button>
-<button 
-(click)="onRemove()" 
-class="bg-red text-white font-bold rounded hover:bg-blue-red"
->Remove</button>
