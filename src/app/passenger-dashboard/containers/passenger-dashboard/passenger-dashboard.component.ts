@@ -1,7 +1,7 @@
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 import { Passenger } from './../../../models/passenger.interface';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-passenger-dashboard',
@@ -11,17 +11,22 @@ import { Router } from '@angular/router';
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
   constructor(private routes: Router,
+    private route: ActivatedRoute,
     private passengerService: PassengerDashboardService) {
   }
 
   ngOnInit() {
-    this.passengerService
-    .getPassengers()
-    .subscribe((data) => {
-      this.passengers = data;
-    }, (error) => {
-      console.log(error);
-    });
+    // 使用resolver的作法
+    this.passengers = this.route.snapshot.data['passengers'];
+
+    // 沒有用resolver的作法
+    // this.passengerService
+    // .getPassengers()
+    // .subscribe((data) => {
+    //   this.passengers = data;
+    // }, (error) => {
+    //   console.log(error);
+    // });
   }
 
   handleEdit(event: Passenger): void {

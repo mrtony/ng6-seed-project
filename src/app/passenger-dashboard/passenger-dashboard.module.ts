@@ -1,3 +1,4 @@
+import { PassengersResolverService } from './passengers-resolver.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'passengers',
     children: [
-      { path: '', component: PassengerDashboardComponent },
+      { path: '', component: PassengerDashboardComponent, resolve: { passengers: PassengersResolverService} },
       { path: ':id', component: PassengerViewerComponent }
     ]
   }
@@ -33,6 +34,6 @@ const routes: Routes = [
     PassengerViewerComponent,
     PassengerFormComponent
   ],
-  providers: [PassengerDashboardService]
+  providers: [PassengerDashboardService, PassengersResolverService]
 })
 export class PassengerDashboardModule {}
