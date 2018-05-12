@@ -14,7 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'passengers',
     children: [
-      { path: '', component: PassengerDashboardComponent, resolve: { passengers: PassengersResolverService} },
+      { path: '', component: PassengerDashboardComponent },
       { path: ':id', component: PassengerViewerComponent }
     ]
   }
@@ -34,6 +34,6 @@ const routes: Routes = [
     PassengerViewerComponent,
     PassengerFormComponent
   ],
-  providers: [PassengerDashboardService, PassengersResolverService]
+  providers: [PassengerDashboardService]
 })
 export class PassengerDashboardModule {}

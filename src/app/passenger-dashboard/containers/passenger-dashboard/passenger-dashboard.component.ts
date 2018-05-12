@@ -20,25 +20,27 @@ export class PassengerDashboardComponent implements OnInit {
 
   ngOnInit() {
     // 使用resolver的作法
-    const checkPassengers: Passenger[] = this.route.snapshot.data['passengers'];
-    if (checkPassengers && checkPassengers.length > 0) {
-      if (checkPassengers[0].id === -1) {
-        console.log('Error', checkPassengers[0]);
-        this.fetchDataError = true;
-      } else {
-        this.passengers = [...this.route.snapshot.data['passengers']];
-        this.fetchDataError = false;
-      }
-    }
+    // const checkPassengers: Passenger[] = this.route.snapshot.data['passengers'];
+    // if (checkPassengers && checkPassengers.length > 0) {
+    //   if (checkPassengers[0].id === -1) {
+    //     console.log('Error', checkPassengers[0]);
+    //     this.fetchDataError = true;
+    //   } else {
+    //     this.passengers = [...this.route.snapshot.data['passengers']];
+    //     this.fetchDataError = false;
+    //   }
+    // }
 
     // 沒有用resolver的作法
-    // this.passengerService
-    // .getPassengers()
-    // .subscribe((data) => {
-    //   this.passengers = data;
-    // }, (error) => {
-    //   console.log(error);
-    // });
+    this.passengerService
+    .getPassengers()
+    .subscribe((data) => {
+      this.passengers = [...data];
+      this.fetchDataError = true;
+    }, (error) => {
+      this.fetchDataError = true;
+      console.log('Fetch Passengers data error:', error);
+    });
   }
 
   handleEdit(event: Passenger): void {
@@ -76,7 +78,7 @@ export class PassengerDashboardComponent implements OnInit {
       this.passengers = [...data];
     }, (error) => {
       this.fetchDataError = true;
-      console.log(error);
+      console.log('Reload Passengers data error:', error);
     });
   }
 }
