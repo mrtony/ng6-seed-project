@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="app">
+  <span *ngIf="loading" class="spinner"><i class="fa fa-spinner"></i></span>
   <nav class="nav">
       <a *ngFor="let item of nav" [routerLink]="item?.link"
        routerLinkActive="active"

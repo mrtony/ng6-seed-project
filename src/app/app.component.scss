@@ -14,3 +14,13 @@
     }
   }
 }
+
+.spinner {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  font-size: 4em;
+  z-index: 10000;
+  margin-top: -120px;
+  margin-left: -20px;
+}

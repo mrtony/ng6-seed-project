@@ -10,14 +10,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
+  fetchDataError: boolean;
+
   constructor(private routes: Router,
     private route: ActivatedRoute,
     private passengerService: PassengerDashboardService) {
+      this.fetchDataError = false;
   }
 
   ngOnInit() {
     // 使用resolver的作法
-    this.passengers = this.route.snapshot.data['passengers'];
+    const checkPassengers: Passenger[] = this.route.snapshot.data['passengers'];
+    if (checkPassengers && checkPassengers.length > 0) {
+      if (checkPassengers[0].id === -1) {
+        console.log('Error', checkPassengers[0]);
+        this.fetchDataError = true;
+      } else {
+        this.passengers = [...this.route.snapshot.data['passengers']];
+        this.fetchDataError = false;
+      }
+    }
 
     // 沒有用resolver的作法
     // this.passengerService
@@ -54,5 +66,17 @@ export class PassengerDashboardComponent implements OnInit {
   handleView(event: Passenger) {
     // /passenger/1
     this.routes.navigate(['/passengers', event.id]);
+  }
+
+  reloadPassengers() {
+    this.passengerService
+    .getPassengers()
+    .subscribe((data) => {
+      this.fetchDataError = false;
+      this.passengers = [...data];
+    }, (error) => {
+      this.fetchDataError = true;
+      console.log(error);
+    });
   }
 }

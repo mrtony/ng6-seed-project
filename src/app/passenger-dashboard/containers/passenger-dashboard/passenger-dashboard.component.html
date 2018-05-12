@@ -9,3 +9,10 @@
 (remove)="handleRemove($event)"
 (view)="handleView($event)">
 </app-passenger-detail>
+
+<div *ngIf="fetchDataError">
+  <h1 class="text-red">Can't load passengers data!</h1>
+  <div>
+    <button (click)="reloadPassengers()">Reload</button>
+  </div>
+</div>
