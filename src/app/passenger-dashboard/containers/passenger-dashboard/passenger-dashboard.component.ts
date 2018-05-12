@@ -1,6 +1,7 @@
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 import { Passenger } from './../../../models/passenger.interface';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-passenger-dashboard',
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
-  constructor(private passengerService: PassengerDashboardService) {
+  constructor(private routes: Router,
+    private passengerService: PassengerDashboardService) {
   }
 
   ngOnInit() {
@@ -42,5 +44,10 @@ export class PassengerDashboardComponent implements OnInit {
     .subscribe(() => {
       this.passengers = this.passengers.filter((p) => p.id !== event.id);
     });
+  }
+
+  handleView(event: Passenger) {
+    // /passenger/1
+    this.routes.navigate(['/passengers', event.id]);
   }
 }

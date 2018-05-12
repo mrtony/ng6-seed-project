@@ -1,6 +1,5 @@
 import { Passenger } from './../../../models/passenger.interface';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-passenger-detail',
@@ -13,10 +12,12 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
 
   @Output() edit: EventEmitter<Passenger>;
   @Output() remove: EventEmitter<Passenger>;
+  @Output() view: EventEmitter<Passenger>;
 
-  constructor(private routes: Router) {
+  constructor() {
     this.edit = new EventEmitter();
     this.remove = new EventEmitter();
+    this.view = new EventEmitter();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,8 +43,7 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
   }
 
   onView() {
-    // /passenger/1
-    this.routes.navigate(['/passengers', this.detail.id]);
+    this.view.emit(this.detail);
   }
 
 }

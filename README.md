@@ -5,7 +5,14 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 ### Step1
-開始另一個bash, 啟動webapi server:
+compile db.ts to db.js for json-server
+
+```
+tsc db
+```
+
+### Step2
+Open a bash in VS code, launch json-server
 ```
 npm run api
 ```
