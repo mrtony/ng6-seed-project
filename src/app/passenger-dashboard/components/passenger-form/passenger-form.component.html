@@ -8,7 +8,7 @@
     #fullname="ngModel"
     [ngModel]="detail?.fullname"
     >
-    <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">
+    <div *ngIf="fullname.invalid && fullname.dirty">
       Fullname is required
     </div>
   </div>
@@ -19,7 +19,7 @@
     #id="ngModel"
     [ngModel]="detail?.id"
     >
-    <div *ngIf="id.invalid && (id.dirty || id.touched)">
+    <div *ngIf="id.invalid && id.dirty">
         Fullname is required
       </div>
   </div>
