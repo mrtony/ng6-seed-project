@@ -21,9 +21,6 @@ export class PassengersResolverService implements Resolve<Passenger[]> {
     .pipe(
       retry(2),
       catchError((err, caught) => {
-        // tslint:disable-next-line:no-debugger
-        debugger;
-        // return throwError([]);
         const errorPassenger: Partial<Passenger> = { id: -1};
         return of([errorPassenger as Passenger]);
       })
