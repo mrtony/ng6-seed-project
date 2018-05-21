@@ -1,0 +1,5 @@
+{
+  // tailwind
+  "css.validate": false,
+  "stylelint.enable": true
+}
